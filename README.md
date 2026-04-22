@@ -23,28 +23,30 @@ Generar conversación orgánica y validada alrededor de la alianza G7 + ZTREAMO,
 
 ## Liderazgo y Equipo
 
-#### Paula Gomez · Equipo ZTREAMO
-- Participación en la coordinación operativa del frente ZTREAMO.
-- Apoyo en articulación interna y seguimiento de ejecución.
-
-#### Sandra · Marketing ZTREAMO
-- Liderar marketing y narrativa de ZTREAMO en la alianza.
-- Coordinar preguntas, mensajes y lineamientos de entrevistas y contenido.
-
-#### Nicolás Rodríguez · CEO ZTREAMO
-- Vocero principal de la alianza.
-- Alinear visión estratégica y mensaje comercial.
-- Validar decisiones clave de activación, podcast y propuesta de valor.
+#### Daniela · Co-Líder ZTREAMO
+- Ejecución operativa junto a Hammer.
+- Coordinar bajada al equipo interno.
+- Gestionar influencers, modelos y vocerías desde ZTREAMO.
 
 #### Hammer Tapias · Co-Líder G7BS
-- Ejecución operativa junto al equipo ZTREAMO.
+- Ejecución operativa junto a Daniela.
 - Desarrollar guiones y mensajes clave.
 - Aterrizar activaciones, entrevistas y dinámica del evento.
+
+#### Nicolás · CEO ZTREAMO
+- Vocero principal de la alianza.
+- Confirmado para Click Financiero.
+- Alinear visión estratégica y mensaje comercial.
 
 #### Nicki · Marketing G7BS
 - Estrategia con influenciadores.
 - Definir calendario, línea visual y piezas teaser.
 - Coordinar presencia publicitaria en la nueva actualización de la app.
+
+#### Sandra Tellez · Marketing ZTREAMO
+- Alinear mensaje de marca y campaña de expectativa.
+- Programar preguntas para entrevistas con enfoque favorable a ZTREAMO.
+- Acompañar definición de narrativa, tiempos y enfoque de vocerías.
 
 #### DRILLER / Click Financiero
 - Entrevista central con Nicolás.
@@ -161,17 +163,17 @@ Cierre de aprendizajes, medición de tráfico, registros, activaciones y respues
 
 | Tarea | Responsable | Estado / Prioridad |
 |---|---|---|
-| Revisar clips de video ya existentes de ZTREAMO | Paula Gomez / Hammer | Prioridad máxima |
+| Revisar clips de video ya existentes de ZTREAMO | Daniela / Hammer | Prioridad máxima |
 | Confirmar estructura final de entrevista con Nicolás para Click Financiero | Nicolás / Hammer / DRILLER | Prioridad máxima |
 | Confirmar hora y tema exacto a trabajar con Nico en el podcast de LALEXPO | Nicolás / Hammer / DRILLER | Prioridad máxima |
 | Redactar guion de Nicolás | Hammer | Alta |
 | Redactar guion de Thiago y del equipo de entrevistas | Hammer / Thiago | Alta |
-| Confirmar que LorenWar realizará la entrevista | Sandra / Hammer / ZTREAMO | Alta |
-| Averiguar duración exacta de la entrevista de LorenWar | Sandra / Hammer | Alta |
-| Programar preguntas para hablar bien de ZTREAMO en la entrevista | Sandra / Hammer | Prioridad máxima |
-| Desarrollar guion específico para Lorena | Hammer / Paula Gomez / Lorena | Prioridad máxima |
-| Definir perfiles de personas a abordar en entrevistas | Hammer / Paula Gomez | Alta |
-| Organizar entrevista a modelos ZTREAMO (Lorena) | Paula Gomez / Lorena | Alta |
+| Confirmar que LorenWar realizará la entrevista | Sandra Tellez / Hammer / ZTREAMO | Alta |
+| Averiguar duración exacta de la entrevista de LorenWar | Sandra Tellez / Hammer | Alta |
+| Programar preguntas para hablar bien de ZTREAMO en la entrevista | Sandra Tellez / Hammer | Prioridad máxima |
+| Desarrollar guion específico para Lorena | Hammer / Daniela / Lorena | Prioridad máxima |
+| Definir perfiles de personas a abordar en entrevistas | Hammer / Daniela | Alta |
+| Organizar entrevista a modelos ZTREAMO (Lorena) | Daniela / Lorena | Alta |
 | Crear contenido con Nicky y Thiago para redes sobre la alianza G7 / ZTREAMO | Nicky / Thiago / Marketing | Alta |
 | Confirmar operación con 2 landing pages | G7BS / ZTREAMO | Prioridad máxima |
 | Verificar si la landing de ZTREAMO debe ser distinta a la de LALEXPO que ofrece 3 meses gratis de monetización | G7BS / ZTREAMO / Growth | Prioridad máxima |
@@ -217,8 +219,15 @@ Esta fase sigue siendo de enamoramiento, validación y construcción de deseo. S
 ## Observación Operativa
 Queda pendiente revisión final de Guillermo Valencia para montar este contenido como checklist de ejecución y dar inicio al seguimiento operativo.
 
+## Nota de Aprobación y Actualización
+Esta Ruta de Trabajo debe ser aprobada por los CEO de ambas partes.
+
+La presente Hoja de Ruta ha sido actualizada por Hammer Tapias en conjunto con todo el equipo de ZTREAMO.
+
+Se aclara que Cianuro no forma parte de esta Ruta de Trabajo.
+
 **Actualizado con notas de Hammer · Reunión del 17 de abril · 2:30 p. m.**
 
 **Complementado con notas de Hammer Tapias · Bitrix_103226 · 20 de abril.**
 
-**Complementado con notas de Hammer Tapias tras reunión con Sandra · 21 de abril de 2026.**
+**Complementado con notas de Hammer Tapias tras reunión con Sandra Tellez · 21 de abril de 2026.**
