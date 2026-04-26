@@ -1,742 +1,404 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hoja de Ruta G7 + ZTREAMO</title>
-  <style>
-    :root {
-      --bg: #f5f7fb;
-      --panel: #ffffff;
-      --panel-soft: #fbfcfe;
-      --text: #152033;
-      --muted: #60708c;
-      --line: #dfe6f1;
-      --primary: #183b8c;
-      --accent: #4f6ecf;
-      --success: #1f8f5f;
-      --warning: #a66a00;
-      --shadow: 0 12px 30px rgba(18, 32, 59, 0.08);
-      --radius: 18px;
-      --max: 1220px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-    }
-    .wrap {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 28px 18px 60px;
-    }
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px 18px;
-      box-shadow: var(--shadow);
-      margin-bottom: 18px;
-      position: sticky;
-      top: 12px;
-      z-index: 10;
-    }
-    .brand strong {
-      display: block;
-      font-size: 1rem;
-      color: var(--primary);
-    }
-    .brand span {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-    nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      text-decoration: none;
-      background: var(--panel-soft);
-      font-size: 0.92rem;
-    }
-    nav a:hover {
-      color: var(--primary);
-      border-color: #c9d5eb;
-    }
-    .hero {
-      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: var(--shadow);
-      margin-bottom: 18px;
-    }
-    .eyebrow {
-      display: inline-block;
-      color: var(--primary);
-      font-size: 0.92rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      margin-bottom: 12px;
-    }
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 3.5vw, 3.4rem);
-      line-height: 1.08;
-      color: #101a2e;
-    }
-    .hero p {
-      margin: 0;
-      max-width: 920px;
-      color: var(--muted);
-      font-size: 1.02rem;
-    }
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 20px;
-    }
-    .meta {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 18px;
-    }
-    .meta .k {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .meta .v {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--primary);
-    }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin: 18px 0;
-    }
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-    .card h2, .section h2 {
-      margin: 0 0 14px;
-      font-size: 1.35rem;
-      color: #12213e;
-    }
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-    .section {
-      margin-top: 18px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-    .section .sub {
-      color: var(--muted);
-      margin: -4px 0 16px;
-    }
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .info-card, .stream-card {
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-    }
-    .info-card h3, .stream-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.04rem;
-      color: var(--primary);
-    }
-    ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-    li {
-      margin: 8px 0;
-      color: #23314d;
-    }
-    .timeline {
-      display: grid;
-      gap: 12px;
-    }
-    .timeline-item {
-      border-left: 4px solid var(--accent);
-      padding: 16px 18px;
-      background: var(--panel-soft);
-      border-radius: 12px 18px 18px 12px;
-      border: 1px solid var(--line);
-    }
-    .timeline-head {
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 6px;
-    }
-    .timeline-item p {
-      margin: 0;
-      color: var(--muted);
-    }
-    .table-wrap {
-      overflow: auto;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--panel-soft);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 920px;
-    }
-    th, td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      background: #f3f6fb;
-      color: var(--primary);
-      font-size: 0.92rem;
-    }
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      border: 1px solid transparent;
-      white-space: nowrap;
-    }
-    .prio-max {
-      color: #8a1d47;
-      background: #fdeaf1;
-      border-color: #f6c4d6;
-    }
-    .prio-high {
-      color: #174b8c;
-      background: #eaf2ff;
-      border-color: #c6d8ff;
-    }
-    .prio-mid {
-      color: #8a5a00;
-      background: #fff4db;
-      border-color: #f3db9a;
-    }
-    .pending-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      list-style: none;
-      padding: 0;
-    }
-    .pending-grid li {
-      padding: 16px 18px;
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      margin: 0;
-    }
-    .footer-note {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .footer-note strong {
-      color: var(--primary);
-    }
-    @media (max-width: 1100px) {
-      .meta-grid, .cards-grid, .pending-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    @media (max-width: 760px) {
-      .topbar {
-        position: static;
-        flex-direction: column;
-        align-items: stretch;
-      }
-      nav {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-      }
-      .grid-2, .meta-grid, .cards-grid, .pending-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero, .section, .card {
-        padding: 20px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruta de Trabajo – Fase 1-60 | G7 + ZTREAMO</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f7fb;
+  --panel:#ffffff;
+  --panel-soft:#fbfcfe;
+  --text:#152033;
+  --muted:#60708c;
+  --line:#dfe6f1;
+  --primary:#183b8c;
+  --accent:#4f6ecf;
+  --success:#1f8f5f;
+  --warning:#a66a00;
+  --danger:#8a1d47;
+  --shadow:0 12px 30px rgba(18,32,59,.08);
+  --radius:18px;
+  --max:1100px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.55}
+.wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 60px}
+
+/* TOPBAR */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);margin-bottom:18px;position:sticky;top:12px;z-index:10}
+.brand strong{display:block;font-size:1rem;color:var(--primary)}
+.brand span{color:var(--muted);font-size:.88rem}
+nav{display:flex;gap:7px;flex-wrap:wrap}
+nav a{padding:6px 13px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--panel-soft);font-size:.84rem;font-weight:500;transition:all .15s}
+nav a:hover{color:var(--primary);border-color:#c9d5eb;background:#f0f4ff}
+
+/* HERO */
+.hero{background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:var(--shadow);margin-bottom:18px}
+.eyebrow{display:inline-block;color:var(--accent);font-size:.86rem;font-weight:600;letter-spacing:.02em;margin-bottom:12px}
+h1{margin:0 0 12px;font-size:clamp(1.8rem,3vw,3rem);line-height:1.08;color:#101a2e;font-weight:700}
+.hero-sub{margin:0 0 12px;max-width:860px;color:var(--muted);font-size:.95rem;line-height:1.7}
+.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:4px}
+.meta{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}
+.meta .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px;font-weight:600}
+.meta .v{font-size:.97rem;font-weight:700;color:var(--primary)}
+
+/* ALERT */
+.alert{border-radius:14px;padding:16px 20px;margin-bottom:18px;font-size:.9rem;line-height:1.6}
+.alert-blue{background:#eef4ff;border:1px solid #c6d8ff;color:#1a3a7c}
+.alert-yellow{background:#fffbea;border:1px solid #f3db9a;color:#7a4f00}
+.alert-green{background:#edfaf4;border:1px solid #a3dfc0;color:#145c3a}
+.alert-red{background:#fff5f5;border:1px solid #f6c4c4;color:#7a1d1d}
+.alert strong{font-weight:700}
+.alert .alert-title{font-weight:700;font-size:.95rem;margin-bottom:6px}
+
+/* SECTION */
+.section{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow);margin-bottom:18px}
+h2{font-size:1.15rem;font-weight:700;color:#12213e;margin:0 0 10px;display:flex;align-items:center;gap:9px}
+h2 .num{width:26px;height:26px;border-radius:7px;background:#eef4ff;border:1px solid #c6d8ff;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--primary);font-weight:700;flex-shrink:0}
+.sub{color:var(--muted);margin:-2px 0 14px;font-size:.88rem}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* CARDS */
+.card{background:var(--panel-soft);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h3{margin:0 0 4px;font-size:.95rem;color:var(--primary);font-weight:700}
+.card .role{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;margin-bottom:8px;display:block}
+ul{margin:0;padding-left:18px}
+li{margin:5px 0;color:#23314d;font-size:.88rem}
+
+/* LEADER */
+.leader{background:var(--panel-soft);border:1px solid var(--line);border-radius:14px;padding:18px;border-top:3px solid var(--primary)}
+.leader h3{margin:0 0 3px;font-size:.97rem;color:var(--primary);font-weight:700}
+.leader .role{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;margin-bottom:8px;display:block}
+
+/* TIMELINE */
+.timeline{display:grid;gap:10px}
+.tl{border-left:4px solid var(--accent);padding:14px 18px;background:var(--panel-soft);border-radius:0 13px 13px 0;border:1px solid var(--line);border-left-width:4px}
+.tl.red{border-left-color:#c0392b}
+.tl.green{border-left-color:var(--success)}
+.tl-head{font-weight:700;color:var(--primary);margin-bottom:6px;font-size:.93rem}
+
+/* LALEXPO */
+.lalexpo-box{background:#fff8f8;border:1px solid #f6c4d6;border-radius:13px;padding:16px;margin-top:10px}
+.lalexpo-title{font-weight:700;font-size:.92rem;color:#8a1d47;margin-bottom:6px}
+.sponsor-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:999px;background:#eef4ff;border:1px solid #c6d8ff;font-size:.74rem;font-weight:700;color:var(--primary);margin-top:8px}
+
+/* TABLE */
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel-soft)}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{padding:10px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f3f6fb;color:var(--primary);font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+td{font-size:.86rem;color:#23314d}
+.pill{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.74rem;font-weight:700;border:1px solid transparent;white-space:nowrap}
+.p-max{color:#8a1d47;background:#fdeaf1;border-color:#f6c4d6}
+.p-high{color:#174b8c;background:#eaf2ff;border-color:#c6d8ff}
+.p-mid{color:#8a5a00;background:#fff4db;border-color:#f3db9a}
+.p-special{color:#145c3a;background:#edfaf4;border-color:#a3dfc0}
+
+/* PENDING */
+.pending-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;list-style:none;padding:0;margin:0}
+.pending-grid li{padding:12px 14px;background:var(--panel-soft);border:1px solid var(--line);border-radius:12px;margin:0;font-size:.86rem;color:#23314d}
+
+.divider{height:1px;background:var(--line);margin:14px 0}
+.history-list{list-style:none;padding:0;margin:0}
+.history-list li{padding:6px 0;border-bottom:1px solid var(--line);font-size:.84rem;color:var(--muted)}
+.history-list li:last-child{border-bottom:none}
+.footer-note{background:var(--panel-soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.86rem;color:var(--muted);margin-top:14px}
+.footer-note strong{color:var(--primary)}
+
+@media(max-width:900px){.meta-grid,.g3,.pending-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  .topbar{position:static;flex-direction:column;align-items:stretch}
+  nav{overflow-x:auto;flex-wrap:nowrap}
+  .g2,.meta-grid,.g3,.pending-grid{grid-template-columns:1fr}
+  .hero,.section{padding:18px}
+}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <strong>Hoja de Ruta G7 + ZTREAMO</strong>
-        <span>Fase 1–60 · Documento de trabajo</span>
-      </div>
-      <nav>
-        <a href="#resumen">Resumen</a>
-        <a href="#equipo">Equipo</a>
-        <a href="#frentes">Frentes</a>
-        <a href="#ruta">Ruta</a>
-        <a href="#checklist">Checklist</a>
-        <a href="#pendientes">Pendientes</a>
-      </nav>
-    </header>
+<div class="wrap">
 
-    <section class="hero" id="resumen">
-      <div class="eyebrow">Basada en Bitrix_103226 · 7 de abril de 2026</div>
-      <h1>Hoja de Ruta G7 + ZTREAMO</h1>
-      <p>Generar conversación orgánica y validada alrededor de la alianza **G7 + ZTREAMO**, activar comunidad en eventos y canales digitales, producir contenido de expectativa, probar incentivos de entrada y medir el interés real del mercado LATAM antes de una fase de conversión formal.
-
----</p>
-
-      <div class="meta-grid">
-        <article class="meta">
-          <div class="k">Fase</div>
-          <div class="v">1–60</div>
-        </article>
-        <article class="meta">
-          <div class="k">Duración</div>
-          <div class="v">60 días</div>
-        </article>
-        <article class="meta">
-          <div class="k">Landings</div>
-          <div class="v">2 flujos</div>
-        </article>
-        <article class="meta">
-          <div class="k">Aprobación</div>
-          <div class="v">CEO de ambas partes</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="grid-2">
-      <article class="card">
-        <h2>Concepto rector</h2>
-        <p>Posicionar a **ZTREAMO** como **la red social de la industria que no te banea**, permite **monetizar contenido** y **crear comunidad**, reforzando además que se trata de una **red social colaborativa**, enfocada en la conexión entre personas y no solo en la transacción.</p>
-      </article>
-      <article class="card">
-        <h2>Notas de control</h2>
-        <p>• Esta Ruta de Trabajo debe ser aprobada por los CEO de ambas partes.<br>• La presente Hoja de Ruta ha sido actualizada por Hammer Tapias en conjunto con todo el equipo de ZTREAMO.<br>• Se aclara que **Cianuro no forma parte** de esta Ruta de Trabajo.</p>
-      </article>
-    </section>
-
-    <section class="section" id="equipo">
-      <h2>Liderazgo y equipo</h2>
-      <p class="sub">Estructura consolidada para ejecución operativa, narrativa, activaciones y validación estratégica.</p>
-      <div class="cards-grid">
-        
-    <article class="info-card">
-      <h3>Hammer Tapias · Co-líder G7BS</h3>
-      <ul><li>Ejecución operativa junto al equipo ZTREAMO.</li><li>Desarrollar guiones y mensajes clave.</li><li>Aterrizar activaciones, entrevistas y dinámica del evento.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>Paula Gomez · Equipo ZTREAMO</h3>
-      <ul><li>Participación en la coordinación operativa del frente ZTREAMO.</li><li>Apoyo en articulación interna y seguimiento de ejecución.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>Sandra Tellez · Marketing ZTREAMO</h3>
-      <ul><li>Liderar marketing y narrativa de ZTREAMO en la alianza.</li><li>Coordinar preguntas, mensajes y lineamientos de entrevistas y contenido.</li><li>Alinear mensaje de marca y campaña de expectativa.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>Nicolás Rodríguez · CEO ZTREAMO</h3>
-      <ul><li>Vocero principal de la alianza.</li><li>Alinear visión estratégica y mensaje comercial.</li><li>Validar decisiones clave de activación, podcast y propuesta de valor.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>Nicki · Marketing G7BS</h3>
-      <ul><li>Estrategia con influenciadores.</li><li>Definir calendario, línea visual y piezas teaser.</li><li>Coordinar presencia publicitaria en la nueva actualización de la app.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>DRILLER / Click Financiero · Podcast y difusión</h3>
-      <ul><li>Entrevista central con Nicolás.</li><li>Conducir podcast o pieza principal de conversación.</li><li>Generar clips y derivados de alto alcance.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>Lorena / LorenWar · Modelos / Vocerías ZTREAMO</h3>
-      <ul><li>Entrevistas a modelos y testimonios.</li><li>Apoyo en contenido humano y social proof.</li><li>Participación en entrevista con guion previamente definido.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>Thiago y equipo de abordaje · Activaciones y entrevistas</h3>
-      <ul><li>Desarrollo de guiones de entrevista.</li><li>Definición de perfiles de personas a abordar.</li><li>Apoyo en activaciones de campo y contenido en eventos.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>Mauro · Coordinación de activación</h3>
-      <ul><li>Determinar con quién estará Hammer rondando durante la activación.</li></ul>
-    </article>
-    
-    <article class="info-card">
-      <h3>Guillermo Valencia · Dirección estratégica</h3>
-      <ul><li>Supervisar coherencia del mensaje.</li><li>Autorizar continuidad hacia la siguiente fase.</li><li>Revisar y convertir esta hoja en checklist operativo de ejecución.</li></ul>
-    </article>
-    
-      </div>
-    </section>
-
-    <section class="section" id="frentes">
-      <h2>Frentes de trabajo</h2>
-      <p class="sub">Bloques de ejecución organizados para facilitar seguimiento, coordinación y priorización.</p>
-      <div class="cards-grid">
-        
-    <article class="stream-card">
-      <h3>A. Contenido Base y Clips</h3>
-      <ul><li>Aprovechar clips de video del material que ya tiene ZTREAMO.</li><li>Producir clips sobre la alianza G7 + ZTREAMO.</li><li>Crear contenido específico con Nicky y Thiago sobre el proceso que se lleva con ZTREAMO y la alianza comercial G7 / ZTREAMO para redes sociales.</li><li>Grabar entrevista a modelos de ZTREAMO, incluyendo a Lorena.</li><li>Desarrollar guion específico para Lorena.</li><li>Generar dos perfiles visuales femeninos para contenido y activación.</li><li>Construir banco de clips cortos para redes, pauta y pantallas.</li><li>Producir un video corto con los dos logos de las empresas G7 / ZTREAMO.</li></ul>
-    </article>
-    
-    <article class="stream-card">
-      <h3>B. Podcast / Entrevistas / Narrativa</h3>
-      <ul><li>Nicolás confirmado para Click Financiero.</li><li>Preparar guion de Nicolás.</li><li>Preparar guion de Thiago y del equipo para entrevistas en campo.</li><li>Definir a quiénes vamos a abordar, con enfoque en perfiles de alto potencial.</li><li>Construir mensaje madre: G7 está trabajando con la red social de la industria que no te banea, te permite monetizar contenido y crear comunidad.</li><li>Reforzar concepto clave: ZTREAMO es una red social colaborativa que alienta la conexión entre personas y no solamente la transacción.</li><li>Confirmar con Nico la información definitiva del podcast.</li><li>Pasar el minuto a minuto de ejecución a Nicolás.</li></ul>
-    </article>
-    
-    <article class="stream-card">
-      <h3>C. Activación en Evento y Experiencia</h3>
-      <ul><li>Diseñar activación VIP y experiencia por segmentos: 35 / 50 / 100 / 250.</li><li>Evaluar formato “ZTREAMO Experience” para julio.</li><li>Preparar actualización o extensión tipo “community update” para agosto / septiembre.</li><li>Confirmar que ZTREAMO llevará 2 chicas brandeadas al evento, con la app funcional y lista para demostración en sitio.</li><li>Definir con Mauro con quién estará Hammer rondando durante la activación.</li><li>Definir dinámica de abordaje con modelo dedicada durante todo el evento.</li><li>El incentivo de 50K aplica cuando la modelo remite 2 personas y esas 2 personas compran el paquete básico de lolipops.</li><li>Clarificar mecánica de incentivo por invitado efectivo: carga de 20K o 30K en tarjeta ZTREAMO.</li><li>Activar presencia de marca con shots + QR en fiestas y espacios brandeados.</li><li>Verificar con Nico la activación de marca en las fiestas.</li><li>Evaluar landing independiente para activaciones en fiestas.</li><li>Diseñar pancarta principal: “Te regalo 50K, pregúntame cómo”.</li><li>Llevar base de datos y dinámica de captura permanente en LALEXPO.</li><li>Incorporar actividad de souvenirs en el stand del podcast.</li></ul>
-    </article>
-    
-    <article class="stream-card">
-      <h3>D. Captura, Landing y Conversión de Registro</h3>
-      <ul><li>Implementar código QR con lista en caliente.</li><li>Crear o ajustar landing page de ZTREAMO para descarga vía QR.</li><li>Verificar si conviene realizar una landing distinta a la de LALEXPO que ofrece 3 meses gratis de monetización.</li><li>Confirmar trabajo con 2 landings.</li><li>Crear 2 formularios de registro diferenciados para los flujos de 50 y 200.</li><li>Definir campaña de expectativa: todavía no se habilita registro completo.</li><li>Si el usuario está activo en G7, debe pasar automáticamente a estar activo en ZTREAMO.</li><li>Cruzar bases de datos para completar el registro de usuarios y reducir fricción operativa.</li><li>Diseñar flujo donde el sistema se encargue del resto una vez activado el usuario.</li><li>Cargar incentivo inicial real de 50K en billetera o tarjeta bajo reglas claras de cumplimiento.</li></ul>
-    </article>
-    
-    <article class="stream-card">
-      <h3>E. Incentivos y Monetización</h3>
-      <ul><li>Definir modelo de incentivo por invitado efectivo: 20K / 30K.</li><li>Integrar mensaje comercial claro: monetización del 100% del pago en determinado plazo.</li><li>Evaluar promesa promocional de carga de 50K en tarjeta como disparador de conversión.</li><li>Diseñar fórmula de souvenirs y concursos ZTREAMO para elevar recordación.</li><li>Alinear con Nico y equipo las condiciones reales del incentivo para evitar errores en comunicación.</li></ul>
-    </article>
-    
-    <article class="stream-card">
-      <h3>F. Distribución y Presencia de Marca</h3>
-      <ul><li>Incluir publicidad de ZTREAMO desde hoy en la nueva actualización de la app, validando si el release ya fue publicado.</li><li>Preparar video / logo de G7 Cripto para piezas, eventos y clips.</li><li>Adicionar presencia visible de ZTREAMO en ecosistemas G7 donde genere tracción inmediata.</li></ul>
-    </article>
-    
-      </div>
-    </section>
-
-    <section class="section" id="ruta">
-      <h2>Ruta de ejecución</h2>
-      <p class="sub">Secuencia sugerida desde expectativa y contenido hasta activación, amplificación y medición.</p>
-      <div class="timeline">
-        
-    <article class="timeline-item">
-      <div class="timeline-head">Días 1–10 · Alineación y preparación</div>
-      <p>Definición del mensaje madre, estructura de la alianza, narrativa comercial, guiones base y responsables. Confirmación de Nicolás para Click Financiero. Revisión del material audiovisual existente.</p>
-    </article>
-    
-    <article class="timeline-item">
-      <div class="timeline-head">Días 11–20 · Producción y activos de captación</div>
-      <p>Producción de clips de alianza, entrevistas a modelos, guiones de abordaje y piezas visuales. Definición del flujo QR, incentivo de 50K y rutas de registro. Decisión de 2 landings y formularios por flujo.</p>
-    </article>
-    
-    <article class="timeline-item">
-      <div class="timeline-head">Días 21–30 · Activación y despliegue en campo</div>
-      <p>Ejecución en LALEXPO y eventos relacionados. Captura de leads con QR, lista en caliente, pancartas, activaciones con modelo, shots brandeados y entrevistas en sitio.</p>
-    </article>
-    
-    <article class="timeline-item">
-      <div class="timeline-head">Días 31–45 · Amplificación y comunidad</div>
-      <p>Distribución sostenida de clips, pauta desde la app, fortalecimiento de base de datos y seguimiento a registros efectivos.</p>
-    </article>
-    
-    <article class="timeline-item">
-      <div class="timeline-head">Días 46–60 · Medición y siguiente fase</div>
-      <p>Cierre de aprendizajes, medición de tráfico, registros, activaciones y respuesta a la oferta. Preparación de propuesta ZTREAMO Experience para julio y actualización de comunidad para agosto / septiembre. ---</p>
-    </article>
-    
-      </div>
-    </section>
-
-    <section class="section" id="checklist">
-      <h2>Checklist de arranque inmediato</h2>
-      <p class="sub">Lista operativa priorizada para convertir la hoja de ruta en ejecución real.</p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Tarea</th>
-              <th>Responsable</th>
-              <th>Prioridad</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-      <tr>
-        <td>Revisar clips de video ya existentes de ZTREAMO</td>
-        <td>Paula Gomez / Hammer</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Confirmar estructura final de entrevista con Nicolás para Click Financiero</td>
-        <td>Nicolás Rodríguez / Hammer / DRILLER</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Confirmar hora y tema exacto a trabajar con Nico en el podcast de LALEXPO</td>
-        <td>Nicolás Rodríguez / Hammer / DRILLER</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Redactar guion de Nicolás</td>
-        <td>Hammer</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Redactar guion de Thiago y del equipo de entrevistas</td>
-        <td>Hammer / Thiago</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Confirmar que LorenWar realizará la entrevista</td>
-        <td>Sandra Tellez / Hammer / ZTREAMO</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Averiguar duración exacta de la entrevista de LorenWar</td>
-        <td>Sandra Tellez / Hammer</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Programar preguntas para hablar bien de ZTREAMO en la entrevista</td>
-        <td>Sandra Tellez / Hammer</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Desarrollar guion específico para Lorena</td>
-        <td>Hammer / Paula Gomez / Lorena</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Definir perfiles de personas a abordar en entrevistas</td>
-        <td>Hammer / Paula Gomez</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Organizar entrevista a modelos ZTREAMO (Lorena)</td>
-        <td>Paula Gomez / Lorena</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Crear contenido con Nicky y Thiago para redes sobre la alianza G7 / ZTREAMO</td>
-        <td>Nicki / Thiago / Marketing</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Confirmar operación con 2 landing pages</td>
-        <td>G7BS / ZTREAMO</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Verificar si la landing de ZTREAMO debe ser distinta a la de LALEXPO</td>
-        <td>G7BS / ZTREAMO / Growth</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Diseñar landing con descarga QR y automatización de registro</td>
-        <td>G7BS / Tech / Marketing</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Crear 2 formularios diferenciados para flujos de 50 y 200</td>
-        <td>Growth / Tech / Marketing</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Evaluar landing independiente para activación en fiestas</td>
-        <td>G7BS / ZTREAMO / Growth</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Definir mecánica de QR + lista en caliente</td>
-        <td>Operación / Eventos</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Estructurar incentivo de 50K en billetera o tarjeta</td>
-        <td>G7BS / Finanzas / Producto</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Ajustar mensaje del incentivo</td>
-        <td>Nicolás Rodríguez / Hammer / Growth</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Definir incentivo por invitado efectivo (20K / 30K)</td>
-        <td>Dirección / Growth</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Diseñar lógica de cruce de bases entre G7 y ZTREAMO</td>
-        <td>Producto / Tech / Datos</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Adicionar ZTREAMO a la landing de G7 si aplica</td>
-        <td>G7BS</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Incluir publicidad de ZTREAMO desde hoy en la nueva actualización de la app</td>
-        <td>Nicki / Producto</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Verificar si la actualización de la app ya fue liberada</td>
-        <td>Producto / Tech</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Preparar video corto con los logos de G7 / ZTREAMO</td>
-        <td>Diseño / Marketing</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Preparar video / logo G7 Cripto</td>
-        <td>Diseño / Marketing</td>
-        <td><span class="pill prio-mid">Media alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Diseñar pancarta “Te regalo 50K, pregúntame cómo”</td>
-        <td>Diseño / Eventos</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Diseñar fórmula de souvenirs y concursos ZTREAMO</td>
-        <td>Marketing / Eventos</td>
-        <td><span class="pill prio-mid">Media alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Entregar souvenirs en actividad de modelos dentro del stand del podcast</td>
-        <td>ZTREAMO / Eventos</td>
-        <td><span class="pill prio-mid">Media alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Preparar activación con shots + QR en fiestas brandeadas</td>
-        <td>Eventos / Alianzas</td>
-        <td><span class="pill prio-mid">Media alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Organizar operación de base de datos en LALEXPO</td>
-        <td>Operación / Growth</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Pasar el minuto a minuto a Nicolás</td>
-        <td>Hammer</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Validar con Mauro con quién estará Hammer en ronda durante el evento</td>
-        <td>Mauro / Hammer</td>
-        <td><span class="pill prio-high">Alta</span></td>
-      </tr>
-    
-      <tr>
-        <td>Verificar con Nico la información final del podcast</td>
-        <td>Nicolás Rodríguez / Hammer</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Verificar con Nico la activación de marca en fiestas</td>
-        <td>Nicolás Rodríguez / Hammer</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-      <tr>
-        <td>Montar este bloque como checklist operativo para ejecución</td>
-        <td>Guillermo Valencia / Equipo</td>
-        <td><span class="pill prio-max">Prioridad máxima</span></td>
-      </tr>
-    
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section" id="pendientes">
-      <h2>Decisiones estratégicas pendientes</h2>
-      <p class="sub">Puntos que aún deben quedar cerrados antes de bajar la ejecución final.</p>
-      <ul class="pending-grid">
-        <li>Confirmar la arquitectura definitiva de las 2 landings y el rol de cada una.</li><li>Definir la promesa comercial exacta del incentivo de 50K y sus condiciones de cumplimiento.</li><li>Definir si el mensaje fuerte será comunidad, monetización, billetera, lista de espera o referidos.</li><li>Definir la arquitectura VIP por segmentos: 35 / 50 / 100 / 250.</li><li>Definir cómo se conecta la experiencia de julio con la actualización de comunidad de agosto / septiembre.</li><li>Confirmar si la campaña se mantiene en expectativa sin registro abierto o si se habilita precaptación controlada.</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Historial de consolidación</h2>
-      <ul>
-        <li>Actualizado con notas de Hammer · Reunión del 17 de abril · 2:30 p. m.</li><li>Complementado con notas de Hammer Tapias · Bitrix_103226 · 20 de abril.</li><li>Complementado con notas de Hammer Tapias tras reunión con Sandra Tellez · 21 de abril de 2026.</li>
-      </ul>
-      <p class="footer-note"><strong>Versión ejecutiva:</strong> diseño más sobrio, con foco en lectura, seguimiento y presentación formal.</p>
-    </section>
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="brand">
+    <strong>Ruta de Trabajo G7 + ZTREAMO</strong>
+    <span>Fase 1-60 · Actualizada 26 de abril de 2026</span>
   </div>
+  <nav>
+    <a href="#contexto">Contexto</a>
+    <a href="#acuerdos">Acuerdos</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#lalexpo">LALEXPO</a>
+    <a href="#horizonte">Horizonte</a>
+    <a href="#checklist">Checklist</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">📅 Actualizada · 26 de abril de 2026 · Post-reunión con Nicolás / ZTREAMO</div>
+  <h1>Ruta de Trabajo G7 + ZTREAMO</h1>
+  <p class="hero-sub">Fase 1-60 simplificada y enfocada tras la reunión con Nicolás. La primera etapa se concentra en una sola prioridad: <strong>generar contenido de valor para las redes de G7Cripto y ZTREAMO</strong>, haciendo más visibles ambas marcas. Todo lo demás es horizonte de la siguiente fase.</p>
+  <div class="meta-grid">
+    <article class="meta"><div class="k">Versión</div><div class="v">Post-reunión Nicolás</div></article>
+    <article class="meta"><div class="k">Fecha</div><div class="v">26 de abril de 2026</div></article>
+    <article class="meta"><div class="k">Foco Fase 1</div><div class="v">Contenido de valor</div></article>
+    <article class="meta"><div class="k">Revisión</div><div class="v">Semana post-LALEXPO</div></article>
+  </div>
+</section>
+
+<!-- ALERTA PRINCIPAL -->
+<div class="alert alert-blue" id="contexto">
+  <div class="alert-title">🎯 Foco de la Fase 1-60 — Acuerdo con Nicolás</div>
+  La primera etapa de esta alianza tiene <strong>un único objetivo claro: generar contenido.</strong> El evento LALEXPO es el punto de partida con la entrevista a Nicolás, donde él hablará de la alianza con G7Cripto. La idea del evento de CLICK_FINANCIERO es <strong>solo generar contenido de valor para nuestras redes</strong> y seguir haciendo más visibles ambas marcas. No hay compromisos comerciales formales en esta fase.
+</div>
+
+<!-- NOTA REUNION -->
+<div class="alert alert-yellow">
+  <div class="alert-title">📌 Nota importante — Reunión de seguimiento</div>
+  Se acuerda realizar una <strong>reunión la próxima semana, después del evento LALEXPO</strong>, para actualizar esta Hoja de Ruta y el checklist: revisar qué tareas se pudieron cumplir y cuáles no, y ajustar el plan para el resto de la Fase 1-60.
+</div>
+
+<!-- ACUERDOS -->
+<section class="section" id="acuerdos">
+  <h2><span class="num">1</span>Acuerdos clave de la reunión</h2>
+  <p class="sub">Puntos acordados con Nicolás — CEO ZTREAMO · 26 de abril de 2026</p>
+  <div class="g2">
+    <div class="alert alert-green" style="margin-bottom:0">
+      <div class="alert-title">🤝 Intención de rieles de pago LATAM</div>
+      Nicolás manifiesta su intención de que <strong>G7BS sea parte de los rieles de pago de ZTREAMO en LATAM</strong>, tanto en cripto como en moneda fiat. Este es un acuerdo de intención — se desarrollará en fases posteriores una vez validada la Fase 1.
+    </div>
+    <div class="alert alert-green" style="margin-bottom:0">
+      <div class="alert-title">💳 Tarjeta de débito ZTREAMO</div>
+      ZTREAMO va a comercializar su <strong>tarjeta de débito</strong>. Queda pendiente revisar cómo vincular esta tarjeta al ecosistema de <strong>G7Cripto en moneda fiat</strong> — esto es una oportunidad estratégica a explorar en la siguiente fase.
+    </div>
+  </div>
+  <div class="alert alert-blue" style="margin-top:14px;margin-bottom:0">
+    <div class="alert-title">⭐ Estrellas WebCam — Anderson Galeano quiere ser parte del proceso</div>
+    Anderson Galeano, representante de <strong>Estrellas WebCam</strong>, expresa su interés en sumarse a esta alianza bajo <strong>condiciones especiales</strong> que se definirán en la reunión de seguimiento post-LALEXPO. Se incorpora como actor estratégico a tener en cuenta para la siguiente etapa.
+  </div>
+</section>
+
+<!-- LIDERAZGO -->
+<section class="section">
+  <h2><span class="num">2</span>Liderazgo de la Fase</h2>
+  <div class="g2">
+    <div class="leader">
+      <h3>Daniela</h3>
+      <span class="role">Co-Líder · ZTREAMO</span>
+      <ul>
+        <li>Co-liderar ejecución operativa junto a Hammer.</li>
+        <li>Coordinar equipo interno de ZTREAMO.</li>
+        <li>Apoyo en producción de contenido y campañas.</li>
+      </ul>
+    </div>
+    <div class="leader">
+      <h3>Hammer Tapias</h3>
+      <span class="role">Co-Líder · G7BS</span>
+      <ul>
+        <li>Co-liderar ejecución operativa junto a Daniela.</li>
+        <li>Desarrollar guiones y mensajes clave.</li>
+        <li>Coordinar la presencia en LALEXPO con CLICK_FINANCIERO.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="section" id="equipo">
+  <h2><span class="num">3</span>Equipo de la Fase 1</h2>
+  <p class="sub">Roles enfocados en la etapa de contenido.</p>
+  <div class="g3">
+    <div class="card">
+      <h3>Nicolás Rodríguez · CEO ZTREAMO</h3>
+      <span class="role">Vocería estratégica</span>
+      <ul>
+        <li>Entrevistado principal en LALEXPO por CLICK_FINANCIERO.</li>
+        <li>Habla de la alianza con G7Cripto públicamente.</li>
+        <li>Valida narrativa y mensajes clave de la alianza.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Oscar "DRILLER" · CLICK_FINANCIERO</h3>
+      <span class="role">Contenido ancla · Podcast</span>
+      <ul>
+        <li>Conduce la entrevista a Nicolás en LALEXPO.</li>
+        <li>Asiste al evento financiado por G7BS.</li>
+        <li>Produce clips y derivados para redes de ambas marcas.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Nicki · Marketing G7BS</h3>
+      <span class="role">Marketing y contenido</span>
+      <ul>
+        <li>Define línea visual y piezas teaser.</li>
+        <li>Coordina distribución del contenido generado.</li>
+        <li>Coordina con THIAGO para amplificación en redes.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Sandra Tellez · Marketing ZTREAMO</h3>
+      <span class="role">Narrativa ZTREAMO</span>
+      <ul>
+        <li>Alinea mensajes y narrativa de ZTREAMO.</li>
+        <li>Coordina lineamientos de entrevistas y contenido.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>THIAGO</h3>
+      <span class="role">Influenciador · Amplificación</span>
+      <ul>
+        <li>Amplificación del contenido generado en LALEXPO.</li>
+        <li>Contenido de expectativa en redes sociales.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Guillermo Valencia · G7BS</h3>
+      <span class="role">Dirección estratégica</span>
+      <ul>
+        <li>Supervisar coherencia del mensaje.</li>
+        <li>Validar resultados post-LALEXPO.</li>
+        <li>Liderar reunión de seguimiento semana post-evento.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ESTRELLAS WEBCAM -->
+  <div class="alert alert-green" style="margin-top:14px;margin-bottom:0">
+    <div class="alert-title">⭐ Anderson Galeano · Estrellas WebCam — Nuevo actor estratégico</div>
+    Manifiesta interés en ser parte de este proceso bajo condiciones especiales. Sus condiciones y rol específico se definirán en la <strong>reunión de seguimiento post-LALEXPO</strong>. Se incorpora al mapa de actores de la alianza para la siguiente etapa.
+  </div>
+</section>
+
+<!-- LALEXPO -->
+<section class="section" id="lalexpo">
+  <h2><span class="num">4</span>LALEXPO · Cali — 26, 27 y 28 de abril de 2026</h2>
+  <p class="sub">Punto de arranque del contenido de la Fase 1. No es un evento comercial — es una oportunidad de producción de contenido.</p>
+
+  <div class="alert alert-blue" style="margin-bottom:14px">
+    <div class="alert-title">🎙️ Objetivo del evento — Solo contenido de valor</div>
+    La idea de la presencia de CLICK_FINANCIERO en LALEXPO es <strong>únicamente generar contenido de valor para nuestras redes sociales</strong> y seguir haciendo más visibles G7Cripto y ZTREAMO. No hay metas de conversión, captación masiva ni compromisos comerciales en este evento.
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <h3>🎙️ Entrevista a Nicolás · CLICK_FINANCIERO</h3>
+      <ul>
+        <li>DRILLER entrevista a Nicolás Rodríguez — CEO ZTREAMO.</li>
+        <li><strong>Día miércoles 30 de abril · 2:30 p.m.</strong></li>
+        <li>Nicolás habla de la alianza con G7Cripto.</li>
+        <li>Formato podcast. Financiado por G7BS.</li>
+        <li>G7Cripto aparece como patrocinador generando expectativa.</li>
+        <li>Material generado: episodio principal + clips cortos para redes.</li>
+      </ul>
+      <div style="margin-top:10px"><span class="sponsor-badge">🏷️ Patrocinador: G7Cripto</span></div>
+    </div>
+    <div class="card">
+      <h3>👯 ZTREAMO en campo — Dos chicas brandeadas</h3>
+      <ul>
+        <li>ZTREAMO llega al evento con <strong>dos chicas brandeadas bajo la marca ZTREAMO</strong>.</li>
+        <li>Estarán acompañando a <strong>Hammer Tapias</strong> durante los recorridos en el evento.</li>
+        <li>Su rol principal: generar estrategias y grabar contenido para las redes sociales de ambas marcas.</li>
+        <li>Mauro coordina los recorridos y la dinámica de campo junto a Hammer.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📱 Contenido a producir en el evento</h3>
+      <ul>
+        <li>Entrevista principal con Nicolás.</li>
+        <li>Clips cortos para redes de G7Cripto y ZTREAMO.</li>
+        <li>Behind the scenes de la alianza.</li>
+        <li>Material para amplificación con THIAGO.</li>
+        <li>Todo el contenido se publica post-evento de forma estratégica.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HORIZONTE ESTRATÉGICO -->
+<section class="section" id="horizonte">
+  <h2><span class="num">5</span>Horizonte estratégico — Fase 2 en adelante</h2>
+  <p class="sub">Temas acordados como intención — se desarrollan después de validar la Fase 1.</p>
+  <div class="g3">
+    <div class="card">
+      <h3>💳 Rieles de pago LATAM</h3>
+      <ul>
+        <li>Nicolás quiere que G7BS sea parte de los rieles de pago de ZTREAMO en LATAM.</li>
+        <li>Aplica tanto para cripto como para moneda fiat.</li>
+        <li>Se define arquitectura en Fase 2.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🪙 Tarjeta de débito ZTREAMO</h3>
+      <ul>
+        <li>ZTREAMO va a comercializar su tarjeta de débito.</li>
+        <li>Oportunidad de vincular la tarjeta al ecosistema G7Cripto en moneda fiat.</li>
+        <li>Se revisa integración en Fase 2.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⭐ Estrellas WebCam</h3>
+      <ul>
+        <li>Anderson Galeano quiere ser parte del proceso.</li>
+        <li>Condiciones especiales por definir en reunión post-LALEXPO.</li>
+        <li>Potencial aliado estratégico para ampliar la red.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST SIMPLIFICADO -->
+<section class="section" id="checklist">
+  <h2><span class="num">6</span>Checklist Fase 1 — Enfocado en contenido</h2>
+  <p class="sub">Lista reducida y práctica. Lo que sí se comprometió en esta fase.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tarea</th><th>Responsable</th><th>Prioridad</th></tr></thead>
+      <tbody>
+        <tr><td>Confirmar hora y formato de la entrevista a Nicolás en LALEXPO — <strong>Miércoles 30 de abril · 2:30 p.m.</strong></td><td>Hammer / DRILLER / Nicolás</td><td><span class="pill p-max">Confirmada</span></td></tr>
+        <tr><td>Preparar guion de entrevista — Nicolás habla de la alianza con G7Cripto</td><td>Hammer / Sandra Tellez</td><td><span class="pill p-special">✅ Listo</span></td></tr>
+        <tr><td>Confirmar logística y financiamiento de CLICK_FINANCIERO en LALEXPO</td><td>Guillermo / Hammer / Oscar</td><td><span class="pill p-special">✅ Listo</span></td></tr>
+        <tr><td>Coordinar recorridos y dinámica de campo con dos chicas brandeadas ZTREAMO y Hammer Tapias</td><td>Hammer / Mauro / ZTREAMO</td><td><span class="pill p-special">✅ Listo</span></td></tr>
+        <tr><td>Definir mensaje madre: alianza G7Cripto + ZTREAMO para redes — incluir a Nicolás como vocero</td><td>Guillermo / Hammer / Daniela / Nicolás</td><td><span class="pill p-max">Prioridad máxima</span></td></tr>
+        <tr><td>Coordinar producción de clips y behind the scenes durante el evento</td><td>DRILLER / Nicki</td><td><span class="pill p-high">Alta</span></td></tr>
+        <tr><td>Definir calendario de publicación del contenido post-LALEXPO</td><td>Nicki / Sandra Tellez</td><td><span class="pill p-high">Alta</span></td></tr>
+        <tr><td>Coordinar amplificación del contenido con THIAGO</td><td>Nicki / Hammer</td><td><span class="pill p-high">Alta</span></td></tr>
+        <tr><td>Agendar reunión de seguimiento semana post-LALEXPO con ZTREAMO y G7BS</td><td>Guillermo / Nicolás</td><td><span class="pill p-max">Prioridad máxima</span></td></tr>
+        <tr><td>Definir condiciones especiales de Anderson Galeano (Estrellas WebCam)</td><td>Guillermo / Hammer</td><td><span class="pill p-special">Reunión post-evento</span></td></tr>
+        <tr><td>Revisar cómo vincular tarjeta ZTREAMO al ecosistema G7Cripto en fiat</td><td>Guillermo / equipo técnico</td><td><span class="pill p-special">Reunión post-evento</span></td></tr>
+        <tr><td>Definir arquitectura de rieles de pago G7BS en ZTREAMO LATAM</td><td>Guillermo / Nicolás</td><td><span class="pill p-special">Reunión post-evento</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- REUNION POST EVENTO -->
+<div class="alert alert-yellow" style="margin-bottom:18px">
+  <div class="alert-title">📅 Reunión de seguimiento — Semana post-LALEXPO</div>
+  Una vez terminado el evento, se realizará una reunión entre G7BS y ZTREAMO para: <strong>(1)</strong> revisar qué tareas del checklist se pudieron cumplir y cuáles no, <strong>(2)</strong> actualizar esta Hoja de Ruta con los aprendizajes del evento, <strong>(3)</strong> definir las condiciones especiales de Anderson Galeano / Estrellas WebCam, y <strong>(4)</strong> avanzar en los temas estratégicos de rieles de pago y tarjeta ZTREAMO.
+</div>
+
+<!-- HISTORIAL -->
+<section class="section">
+  <h2><span class="num">7</span>Historial de consolidación</h2>
+  <ul class="history-list">
+    <li>Versión inicial — Ruta de Trabajo sugerida por G7BS a ZTREAMO · Abril 2026</li>
+    <li>Actualizado con notas de Hammer · Reunión 17 de abril · 2:30 p.m.</li>
+    <li>Complementado con notas de Hammer Tapias · Bitrix_103226 · 20 de abril</li>
+    <li>Complementado con notas tras reunión con Sandra Tellez · 21 de abril de 2026</li>
+    <li>Fusión versión estratégica G7BS + versión operativa Hammer / ZTREAMO · 26 de abril de 2026</li>
+    <li>✅ <strong>Simplificación y enfoque post-reunión con Nicolás · 26 de abril de 2026</strong> — Fase 1 reducida a contenido. Se incorporan acuerdos de intención: rieles de pago LATAM, tarjeta de débito ZTREAMO y participación de Estrellas WebCam / Anderson Galeano.</li>
+  </ul>
+  <div class="footer-note">
+    <strong>Nota de cierre:</strong> La Fase 1-60 tiene un único foco: generar contenido de valor que haga más visibles a G7Cripto y ZTREAMO. LALEXPO (26–28 abril · Cali) es el arranque con la entrevista a Nicolás en CLICK_FINANCIERO. Todo lo comercial y estratégico — rieles de pago, tarjeta de débito, integración con Estrellas WebCam — se revisa en la reunión de la semana siguiente al evento.
+  </div>
+</section>
+
+</div>
 </body>
 </html>
